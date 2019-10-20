@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#Batch testing by @@@ Amit Shuster @@@ 2017
+
+echo "MTMEscapy tests by @@@ Amit Shuster & Michal Guttmann @@@"
+i=1;
+failed=0
+failed_tests=""
+while [[ -f ../TestFiles/tests/test$i ]]; do  
+	echo -n Running test $i:
+	source ../TestFiles/tests/test${i} > ../TestFiles/outputs/test${i}.out 
+	if [[ $(diff ../TestFiles/expouts/test${i}.expout ../TestFiles/outputs/test${i}.out | wc -w) -gt 0 ]]; then 
+		echo -n " Failed"
+		failed=1
+		failed_tests="$failed_tests $i"
+	else
+		echo -n " Success"
+	fi
+	let i++
+	echo ""
+done
+
+if (( failed == 0 )) ; then
+	echo "All tests passed :)"
+else
+	echo -n ">> Some tests failed : "
+	echo $failed_tests
+	echo ">> check the expout and your output"
+fi

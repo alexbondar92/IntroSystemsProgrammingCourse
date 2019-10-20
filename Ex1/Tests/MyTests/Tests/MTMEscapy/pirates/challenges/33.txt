@@ -1,0 +1,4 @@
+visit id: 3
+overall time: 66
+challenge type: 37
+challenge description: tut ankh amon

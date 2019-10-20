@@ -1,0 +1,54 @@
+#!/bin/bash
+
+file_in="../Tests/Input"
+file_out="../Tests/Output"
+file_exp="../Tests/Expout"
+
+echo "******* Tests *******"
+echo ""
+echo "/* Make sure input files are unix decoded (dos2unix [file])"
+echo "* to stop press CTRL+C in terminal"
+echo "* some tests (t30-t40) can make some time*/"
+echo ""
+
+echo "The script will now give you permissions so you can run it"
+echo ""
+
+chmod 700 $file_in/*
+chmod 700 $file_out/*
+chmod 700 $file_exp/*
+
+echo ""
+echo "Successfully gave permissions"
+echo ""
+
+echo ""
+echo "Changing file formats from DOS to UNIX"
+echo ""
+
+dos2unix $file_exp/*
+
+
+fail_count=0;
+echo ":: Running Tests ::"
+for file in `ls $file_in`; do
+	$file_in/$file > $file_out/$file.out
+	echo "${file} >> ${file}.out" 
+	dos2unix $file_out/$file.out
+	res=`diff "$file_out/$file.out" "$file_exp/$file.expout"`
+	if [[ ${res} == "" ]]; then
+		echo "Success"
+	else
+		echo "Failed {check out ${file_exp}/${file}}"
+		let fail_count++
+	fi
+done
+
+echo ":: TEST FINISHED ::"
+
+if (( fail_count==0 )); then
+echo ""
+echo "Your scripts passed all the tests!!! :)"
+else
+echo "Some tests failed"
+fi

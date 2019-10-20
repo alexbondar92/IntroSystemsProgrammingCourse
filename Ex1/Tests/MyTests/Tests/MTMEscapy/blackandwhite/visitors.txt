@@ -1,0 +1,11 @@
+30 11 Amit
+50 44 Michal
+20 32 Guy
+14 54 guy
+22 85 Shahar
+89 13 Michal
+42 15 Sagi
+55 17 Amit
+80 43 Guy
+23 21 Michal
+15 28 Amir

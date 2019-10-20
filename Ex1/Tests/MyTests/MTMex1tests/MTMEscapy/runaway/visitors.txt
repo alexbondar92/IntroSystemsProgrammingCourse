@@ -1,0 +1,7 @@
+80 63 Moshe
+10 45 Ben
+50 14 Rita
+40 32 Noam
+55 34 Roi
+30 12 Genia
+20 31 Noam

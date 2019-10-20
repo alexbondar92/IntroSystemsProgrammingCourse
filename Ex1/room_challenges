@@ -1,0 +1,13 @@
+#! /bin/bash
+room_name=$1
+threshold=$2
+
+visitors=(`last_visitors $room_name | cut -d" " -f1 | sort -n`)
+
+
+
+for current_visitor in ${visitors[*]}; do
+	winners=`visitor_challenges $room_name $current_visitor $threshold | grep -w Winner | wc -l`
+	losses=`visitor_challenges $room_name $current_visitor $threshold | grep -w Loser | wc -l`
+	echo $current_visitor $winners winners $losses losses $(($winners + $losses))
+done | sort -snrk6 | cut -d" " -f1,2,4

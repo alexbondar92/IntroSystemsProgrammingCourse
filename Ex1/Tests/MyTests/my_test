@@ -1,0 +1,12 @@
+#! /bin/bash
+
+for((i=1;i<=12;i++)); do
+	../SampleTests/test$i > tmpout 
+	if [[ `diff ../SampleTests/test$i.expout tmpout` == "" ]]; then
+		echo "test$i Seccess"
+	else
+		echo "test$i failed:"
+		diff ../SampleTests/test$i.expout tmpout
+	fi
+done
+rm tmpout

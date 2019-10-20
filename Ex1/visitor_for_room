@@ -1,0 +1,4 @@
+#! /bin/bash
+room_name=$1
+visitor_name=$2
+grep -w $visitor_name $room_name/visitors.txt | sort -nk2 |cut -d" " -f1-2

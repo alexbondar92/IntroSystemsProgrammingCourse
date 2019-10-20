@@ -1,0 +1,21 @@
+#! /bin/bash
+room_name=$1
+visitor_name=$2
+threshold=$3
+
+visit_ids=(`grep -w $visitor_name $room_name/visitors.txt | cut -d" " -f2 | sort -n`)
+
+#dos2unix -q $room_name/challenges/*.chg
+
+for current_id in ${visit_ids[*]}; do
+	currnet_file=(`grep -lw "visit id: $current_id" $room_name/challenges/*.chg`)
+	if [[ $currnet_file != "" ]]; then
+		current_time=`grep -w "overall time:" $currnet_file | cut -d" " -f3`
+		if ((${current_time} < ${threshold})); then
+			echo $current_id Winner
+		else
+			echo $current_id Loser
+		fi
+	fi
+done
+

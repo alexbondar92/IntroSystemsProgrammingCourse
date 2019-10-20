@@ -1,0 +1,18 @@
+#! /bin/bash
+threshold=$1
+
+for current_visitor in $@; do
+	if [[ $current_visitor != $threshold ]]; then
+		echo $current_visitor
+
+		rooms=`ls | sort`
+		for current_room in ${rooms[*]}; do
+			if [[ -d $current_room ]]; then
+				winns_and_losses=`room_challenges $current_room $threshold | grep -w $current_visitor | cut -d" " -f2,3`
+				if [[ $winns_and_losses != "" ]]; then
+					echo "	$current_room: $winns_and_losses"
+				fi
+			fi
+		done
+	fi
+done

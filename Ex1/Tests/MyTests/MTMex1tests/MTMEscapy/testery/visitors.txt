@@ -1,0 +1,17 @@
+80 63 Ima
+10 45 Imaa
+50 14 Imaaa
+40 37 Aba
+55 34 Dudu
+10 16 Hello
+10 13 Hello
+13 78 Hello
+69 90 imA
+46 34 Hello
+43 30 everyOne
+30 12 Genia
+20 31 Noam
+10 65 Moshe
+40 32 Noam
+36 36 Noam
+

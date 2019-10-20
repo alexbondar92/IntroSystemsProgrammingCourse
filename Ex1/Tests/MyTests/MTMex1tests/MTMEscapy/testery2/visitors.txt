@@ -1,0 +1,17 @@
+60 10 Holy
+50 32 Holy
+80 10 Holy
+40 100 Holy
+75 1 Holy
+79 10 Holy
+95 1 Eden
+93 10 A
+89 100 B
+34 443 B
+43 1 AA
+43 43 AA
+443 100 BB
+43 100 BBB
+34 1 A
+43 10 AB
+46 100 ABC
